@@ -15,7 +15,7 @@ import streamlit as st
 import os
 
 
-dataset_df = pd.read_csv('House_Prices/submission.csv')
+dataset_df = pd.read_csv('submission.csv')
 
 st.write("### Описательная статистика цен на продажу")
 
