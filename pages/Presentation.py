@@ -30,6 +30,36 @@ plt.xlabel('Цена продажи')
 plt.ylabel('Плотность')
 st.pyplot(plt)
 
+st.write("### Оценка важности фичей")
+
+st.write("#### SHAP")
+
+image_path_1 = 'pages/shap.png'
+
+if not os.path.exists(image_path_1):
+    st.error(f"Файл {image_path_1} не найден.")
+else:
+    st.image(image_path_1, use_column_width=True)
+
+st.write("#### Feature importance")
+
+image_path_2 = 'pages/feat.png'
+
+if not os.path.exists(image_path_2):
+    st.error(f"Файл {image_path_2} не найден.")
+else:
+    st.image(image_path_2, use_column_width=True)
+
+st.write("#### Permutation importance")
+
+image_path_3 = 'pages/perm.png'
+
+if not os.path.exists(image_path_3):
+    st.error(f"Файл {image_path_3} не найден.")
+else:
+    st.image(image_path_3, use_column_width=True)
+
+
 st.write("### Метрики разных моделей")
 
 image_path = 'pages/kaggle.png'
@@ -40,12 +70,14 @@ else:
     st.image(image_path, use_column_width=True)
 
 
+
+
 st.header("Таблица метрик")
 
-col1, col2, col3 = st.columns(3)
-col1.metric("**Метрика RMLSE**",
-            f"{round(RMLSE, 5)}")
-col2.metric("**Метрика RMLSE-KAGGLE**",
-            f"{RMLSE_KAGGLE}")
-col3.metric("**Метрика R2**",
-            f"{round(R2, 4)}")
+
+METRIKS = pd.DataFrame(data={'RMLSE': [0.13556, 0.15703, 0.15459, 0.13749], 
+                             'RMSE': [32171.60, 31111.02, 33994.14, 31111.03], 
+                             'R2':[0.8473, 0.7916, 0.8295, 0.8394]}, 
+                             index=['LGBM', 'RandomForest', 'XGB', 'CatBoost'])
+
+st.write(METRIKS)
