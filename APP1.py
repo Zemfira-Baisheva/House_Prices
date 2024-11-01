@@ -37,7 +37,7 @@ else:
     st.stop()
 
 
-data = pd.read_csv("/House_Prices/train.csv")
+data = pd.read_csv("train.csv")
 pd.set_option('display.max_columns', None)
 
 X, y = data.drop('SalePrice', axis=1), data['SalePrice']
